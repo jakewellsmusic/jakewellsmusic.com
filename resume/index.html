@@ -6,310 +6,185 @@
   <title>Jake Wells — Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
 
-    /* ─── Reset ─────────────────────────────────────────── */
+    /* ── reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ─── Tokens ─────────────────────────────────────────── */
     :root {
-      --ink:        #111111;
-      --ink-2:      #3a3a3a;
-      --ink-3:      #666666;
-      --ink-4:      #999999;
-      --rule:       #e6dfd4;
-      --rule-light: #f0ebe3;
-      --accent:     #b8924a;
-      --bg:         #ffffff;
-      --page-bg:    #f4f1ec;
+      --ink:   #1a1a1a;   /* primary text     */
+      --ink-2: #4a4a4a;   /* body             */
+      --ink-3: #767676;   /* meta / secondary */
+      --ink-4: #a3a3a3;   /* faint labels     */
+      --rule:  #e4e4e4;   /* hairlines        */
+      --bg:    #ffffff;
+      --shell: #ededea;
     }
 
-    /* ─── Base ───────────────────────────────────────────── */
-    html { font-size: 14px; }
+    html { font-size: 15px; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.7;
-      color: var(--ink);
-      background: var(--page-bg);
-      padding: 48px 20px 64px;
+      color: var(--ink-2);
+      background: var(--shell);
+      line-height: 1.6;
+      padding: 44px 18px 60px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ─── Page shell ─────────────────────────────────────── */
     .page {
       max-width: 760px;
       margin: 0 auto;
       background: var(--bg);
-      padding: 56px 68px 52px;
-      box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+      padding: 56px 60px 52px;
+      box-shadow: 0 6px 44px rgba(0,0,0,0.09);
     }
 
-    /* ─── Header ─────────────────────────────────────────── */
-    .header {
-      margin-bottom: 40px;
-    }
+    /* ── masthead ── */
+    .masthead { margin-bottom: 26px; }
 
     .name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 52px;
-      font-weight: 600;
-      letter-spacing: -1px;
-      line-height: 1;
+      font-size: 39px;
+      font-weight: 700;
+      letter-spacing: -1.4px;
       color: var(--ink);
-      margin-bottom: 16px;
-    }
-
-    /* The one accent element on the entire page */
-    .name-rule {
-      height: 1.5px;
-      background: var(--accent);
-      margin-bottom: 14px;
-      width: 100%;
-    }
-
-    .tagline {
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.26em;
-      color: var(--ink-4);
+      line-height: 1;
       margin-bottom: 11px;
     }
 
-    .contact {
-      font-size: 12.5px;
-      font-weight: 300;
-      color: var(--ink-3);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0;
-    }
-
-    .contact a {
-      color: var(--ink-3);
-      text-decoration: none;
-    }
-
-    .contact a:hover { color: var(--ink); }
-
-    .dot {
-      display: inline-block;
-      margin: 0 9px;
-      font-size: 10px;
-      color: var(--rule);
-      line-height: 1;
-    }
-
-    /* ─── Section scaffold ───────────────────────────────── */
-    .section {
-      margin-bottom: 0;
-    }
-
-    .label {
-      font-size: 9px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: var(--ink-4);
-      border-top: 1px solid var(--rule);
-      padding-top: 17px;
-      margin-top: 24px;
-      margin-bottom: 13px;
-    }
-
-    /* ─── Profile ────────────────────────────────────────── */
-    .profile p {
-      font-size: 13.5px;
+    .lede {
+      font-size: 14.5px;
       font-weight: 400;
-      line-height: 1.78;
       color: var(--ink-2);
+      line-height: 1.5;
+      max-width: 33em;
+      margin-bottom: 15px;
     }
 
-    /* ─── Competencies ───────────────────────────────────── */
-    .competencies {
-      font-size: 12.5px;
+    .meta {
+      font-size: 11.5px;
       font-weight: 400;
       color: var(--ink-3);
-      line-height: 1.95;
       letter-spacing: 0.01em;
     }
+    .meta a { color: var(--ink-3); text-decoration: none; }
+    .meta a:hover { color: var(--ink); }
+    .meta .sep { color: var(--rule); margin: 0 8px; }
 
-    /* ─── Experience ─────────────────────────────────────── */
-    .job {
-      padding-bottom: 18px;
-      margin-bottom: 18px;
-      border-bottom: 1px solid var(--rule-light);
+    /* ── body grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 232px;
+      gap: 0 42px;
+      border-top: 1.5px solid var(--ink);
+      padding-top: 26px;
     }
 
-    .job:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 0;
+    /* ── section labels ── */
+    .label {
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--ink-4);
+      margin-bottom: 15px;
     }
 
-    .job-top {
+    .block + .block { margin-top: 25px; }
+
+    /* ── experience entries ── */
+    .entry + .entry { margin-top: 18px; }
+
+    .entry-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 16px;
+      gap: 14px;
       margin-bottom: 1px;
     }
 
-    .job-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-      letter-spacing: -0.15px;
-    }
-
-    .job-date {
-      font-size: 11.5px;
-      font-weight: 300;
-      color: var(--ink-4);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .job-company {
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--ink-3);
-      margin-bottom: 10px;
-    }
-
-    .job-company .loc {
-      font-weight: 300;
-      color: var(--ink-4);
-    }
-
-    .job ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .job li {
+    .role {
       font-size: 13.5px;
-      font-weight: 400;
-      color: var(--ink-2);
-      line-height: 1.72;
-      padding-left: 16px;
-      position: relative;
-      margin-bottom: 4px;
-    }
-
-    .job li:last-child { margin-bottom: 0; }
-
-    .job li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      font-size: 11px;
-      line-height: 2;
-      color: var(--rule);
-      font-weight: 300;
-    }
-
-    /* ─── Ventures ───────────────────────────────────────── */
-    .venture {
-      margin-bottom: 14px;
-    }
-
-    .venture:last-child { margin-bottom: 0; }
-
-    .venture-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 3px;
-    }
-
-    .venture-name {
-      font-size: 14.5px;
       font-weight: 600;
       color: var(--ink);
       letter-spacing: -0.1px;
     }
 
-    .venture-date {
-      font-size: 11.5px;
-      font-weight: 300;
+    .years {
+      font-size: 11px;
+      font-weight: 400;
       color: var(--ink-4);
       white-space: nowrap;
       flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
     }
 
-    .venture p {
-      font-size: 13.5px;
+    .org {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-3);
+      margin-bottom: 6px;
+    }
+
+    .desc {
+      font-size: 12px;
       font-weight: 400;
       color: var(--ink-2);
-      line-height: 1.72;
+      line-height: 1.62;
     }
 
-    /* ─── Creative credits ───────────────────────────────── */
-    .credits {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 48px;
-    }
+    /* ── right rail ── */
+    .rail { padding-left: 0; }
 
-    .credit {
-      font-size: 13px;
-      color: var(--ink-2);
+    .rail .block:first-child { margin-top: 0; }
+
+    .rail-list {
+      font-size: 11.5px;
       line-height: 1.5;
+      color: var(--ink-2);
     }
 
-    .credit strong {
+    .rail-item { margin-bottom: 9px; }
+    .rail-item:last-child { margin-bottom: 0; }
+    .rail-item .k {
+      display: block;
       font-weight: 600;
       color: var(--ink);
+      letter-spacing: -0.1px;
     }
+    .rail-item .v { color: var(--ink-3); }
 
-    /* ─── Bottom two-col ─────────────────────────────────── */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 52px;
-    }
-
-    .skills-list {
-      font-size: 13px;
-      font-weight: 400;
+    .caps {
+      font-size: 11.5px;
+      line-height: 1.85;
       color: var(--ink-2);
-      line-height: 1.9;
     }
 
-    .edu-school {
-      font-size: 14px;
+    .edu-name {
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--ink);
       margin-bottom: 2px;
     }
-
-    .edu-detail {
-      font-size: 13px;
-      font-weight: 400;
+    .edu-meta {
+      font-size: 11.5px;
       color: var(--ink-3);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    /* ─── Print / PDF ────────────────────────────────────── */
+    /* ── print ── */
     @media print {
       body  { background: #fff; padding: 0; }
-      .page { box-shadow: none; padding: 48px 52px; max-width: 100%; }
+      .page { box-shadow: none; padding: 46px 48px; max-width: 100%; }
     }
+    .entry, .rail-item, .block { break-inside: avoid; page-break-inside: avoid; }
 
-    .section, .job, .venture, .credits { break-inside: avoid; page-break-inside: avoid; }
-    .label { break-after: avoid; page-break-after: avoid; }
-
-    /* ─── Mobile ─────────────────────────────────────────── */
     @media (max-width: 620px) {
-      .page   { padding: 36px 28px; }
-      .name   { font-size: 38px; }
-      .two-col, .credits { grid-template-columns: 1fr; }
+      .page { padding: 34px 26px; }
+      .name { font-size: 32px; }
+      .grid { grid-template-columns: 1fr; gap: 30px; }
     }
 
   </style>
@@ -317,152 +192,125 @@
 <body>
 <div class="page">
 
-  <!-- ── HEADER ─────────────────────────────────────────── -->
-  <header class="header">
+  <!-- ── MASTHEAD ── -->
+  <header class="masthead">
     <h1 class="name">Jake Wells</h1>
-    <div class="name-rule"></div>
-    <p class="tagline">Brand Strategy &amp; Creative Project Management</p>
-    <div class="contact">
+    <p class="lede">I run complicated projects and build creative work — from federal-scale operations to brands of my own.</p>
+    <div class="meta">
       <span>Kansas City, MO</span>
-      <span class="dot">·</span>
+      <span class="sep">/</span>
       <span>(850) 499-6300</span>
-      <span class="dot">·</span>
+      <span class="sep">/</span>
       <a href="mailto:jwellsthompson@gmail.com">jwellsthompson@gmail.com</a>
-      <span class="dot">·</span>
-      <a href="https://jakewellsmusic.com" target="_blank">jakewellsmusic.com</a>
+      <span class="sep">/</span>
+      <a href="https://jakewellsmusic.com">jakewellsmusic.com</a>
     </div>
   </header>
 
-  <!-- ── PROFILE ────────────────────────────────────────── -->
-  <section class="section">
-    <div class="label">Profile</div>
-    <p>Creative operator and project management professional with a record spanning federal-scale disaster relief, independent brand founding, and award-connected media production. Proven ability to manage complex, multi-stakeholder projects under pressure — from coordinating hundreds of contractors across nine cities to directing original content from concept through distribution. Equal fluency in strategic thinking, client relations, and hands-on creative execution.</p>
-  </section>
+  <!-- ── BODY ── -->
+  <div class="grid">
 
-  <!-- ── COMPETENCIES ───────────────────────────────────── -->
-  <section class="section">
-    <div class="label">Core Competencies</div>
-    <div class="competencies">
-      Brand Strategy &nbsp;·&nbsp; Project Management &nbsp;·&nbsp; Client &amp; Stakeholder Relations &nbsp;·&nbsp;
-      Creative Direction &nbsp;·&nbsp; Copywriting &nbsp;·&nbsp; Campaign Strategy &nbsp;·&nbsp;
-      Vendor &amp; Contractor Management &nbsp;·&nbsp; Content Strategy &nbsp;·&nbsp;
-      Media &amp; PR &nbsp;·&nbsp; Budget Oversight &nbsp;·&nbsp; Cross-functional Team Leadership
-    </div>
-  </section>
+    <!-- LEFT: experience -->
+    <main class="main">
+      <div class="label">Experience</div>
 
-  <!-- ── EXPERIENCE ─────────────────────────────────────── -->
-  <section class="section">
-    <div class="label">Experience</div>
-
-    <div class="job">
-      <div class="job-top">
-        <span class="job-title">Contract Project Manager</span>
-        <span class="job-date">Oct 2024 – Present</span>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="role">Project Manager</span>
+          <span class="years">2024 — Present</span>
+        </div>
+        <div class="org">AshBritt Environmental · Contract</div>
+        <p class="desc">Led debris-recovery project management for the federal response to Hurricane Helene, across 3 counties and 9 cities. Coordinated hundreds of subcontractors and removal crews across simultaneous active sites, working directly with FEMA and the US Army Corps of Engineers throughout a multi-hundred-million-dollar operation.</p>
       </div>
-      <div class="job-company">AshBritt Environmental <span class="loc">· Kansas City, MO</span></div>
-      <ul>
-        <li>Served as lead PM for one of the largest disaster relief operations in the US in 2024–25, overseeing Hurricane Helene recovery across 3 counties and 9 cities.</li>
-        <li>Managed a multi-hundred-million-dollar federal project end-to-end — coordinating hundreds of contractors, debris management sites, and removal crews across simultaneous active workstreams.</li>
-        <li>Primary liaison to FEMA and the US Army Corps of Engineers; maintained strict compliance with federal oversight, safety standards, and reporting requirements throughout.</li>
-        <li>Delivered exceptional performance across all client metrics — organization, communication, and contractor coordination — earning formal recognition from AshBritt's Senior Vice President.</li>
-        <li>Sustained a 7-day, sunrise-to-sunset operational pace across six consecutive months without incident.</li>
-      </ul>
-    </div>
 
-    <div class="job">
-      <div class="job-top">
-        <span class="job-title">Regional Director, Sales</span>
-        <span class="job-date">2017</span>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="role">Owner &amp; Creative Director</span>
+          <span class="years">2020 — Present</span>
+        </div>
+        <div class="org">The Creative Wells Agency</div>
+        <p class="desc">A custom music and brand-audio studio. Write and produce commissioned work for clients including Tom's Town Distilling Co., and placed original music with HBO. I handle the brand, the client relationships, and the work itself.</p>
       </div>
-      <div class="job-company">ADT Security Services <span class="loc">· Kansas City, MO</span></div>
-      <ul>
-        <li>Managed a regional territory — prospecting, presenting, and closing residential and commercial security contracts in a high-volume, performance-driven environment.</li>
-        <li>Built client relationships and developed territory growth strategy from the ground up.</li>
-      </ul>
-    </div>
 
-    <div class="job">
-      <div class="job-top">
-        <span class="job-title">Department Manager, Deli &amp; Grocery</span>
-        <span class="job-date">2013 – 2015</span>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="role">Owner</span>
+          <span class="years">2016 — Present</span>
+        </div>
+        <div class="org">Jake Wells Music, LLC</div>
+        <p class="desc">Built and ran an independent artist company end to end — releases, art direction, press, and the digital marketing behind them. One single reached the US Spotify chart; the catalog has carried me onto national television and HBO.</p>
       </div>
-      <div class="job-company">King Soopers (Kroger) <span class="loc">· Fort Collins, CO</span></div>
-      <ul>
-        <li>Managed daily operations for deli and grocery department — staffing, inventory, vendor relations, and quality control.</li>
-        <li>Named Kroger Employee of the Month; recognized for operational performance and team leadership.</li>
-      </ul>
-    </div>
 
-  </section>
-
-  <!-- ── VENTURES ───────────────────────────────────────── -->
-  <section class="section">
-    <div class="label">Entrepreneurial Ventures</div>
-
-    <div class="venture">
-      <div class="venture-top">
-        <span class="venture-name">The Creative Wells Agency</span>
-        <span class="venture-date">2020 – Present</span>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="role">Regional Sales Director</span>
+          <span class="years">2017</span>
+        </div>
+        <div class="org">ADT Security Services</div>
+        <p class="desc">Sold residential and commercial security across a regional territory, building the book of business from the ground up.</p>
       </div>
-      <p>Boutique creative studio offering custom music composition, brand audio, and content production. Clients include Tom's Town Distilling Co. (radio jingle campaign). Concurrent with HBO sync placement on <em>FBoy Island</em> (2022).</p>
-    </div>
 
-    <div class="venture">
-      <div class="venture-top">
-        <span class="venture-name">Jake Wells Music, LLC</span>
-        <span class="venture-date">2017 – Present</span>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="role">Department Manager</span>
+          <span class="years">2013 — 2015</span>
+        </div>
+        <div class="org">King Soopers / Kroger</div>
+        <p class="desc">Ran daily operations for a deli and grocery department — staffing, inventory, vendors, and quality. Named Employee of the Month.</p>
       </div>
-      <p>Independent artist brand and entertainment company. Managed all facets of brand strategy, content creation, art direction, PR, and digital marketing. Coordinated with publicists, NBC/<em>The Voice</em> production, and sync licensing partners.</p>
-    </div>
 
-    <div class="venture">
-      <div class="venture-top">
-        <span class="venture-name">Elsewise Screen Printing</span>
-        <span class="venture-date">2024 – Present</span>
+    </main>
+
+    <!-- RIGHT: rail -->
+    <aside class="rail">
+
+      <div class="block">
+        <div class="label">Recognition</div>
+        <div class="rail-list">
+          <div class="rail-item">
+            <span class="k">HBO</span>
+            <span class="v">Sync placement, <em>FBoy Island</em></span>
+          </div>
+          <div class="rail-item">
+            <span class="k">NBC — The Voice</span>
+            <span class="v">Cast, Team Adam Levine</span>
+          </div>
+          <div class="rail-item">
+            <span class="k">Spotify</span>
+            <span class="v">Charted Top 15 in the US</span>
+          </div>
+          <div class="rail-item">
+            <span class="k">Documentary</span>
+            <span class="v">Producer &amp; subject, in progress</span>
+          </div>
+          <div class="rail-item">
+            <span class="k">Tom's Town Distilling</span>
+            <span class="v">Commissioned brand audio</span>
+          </div>
+        </div>
       </div>
-      <p>Independent apparel and merch production startup. Managing brand identity, client acquisition, production workflow, and go-to-market strategy.</p>
-    </div>
 
-  </section>
-
-  <!-- ── CREATIVE CREDITS ───────────────────────────────── -->
-  <section class="section">
-    <div class="label">Selected Creative Credits</div>
-    <div class="credits">
-      <div class="credit"><strong>HBO</strong> — Sync placement, <em>FBoy Island</em> (2022)</div>
-      <div class="credit"><strong>NBC / The Voice</strong> — Cast, Team Adam</div>
-      <div class="credit"><strong>Spotify</strong> — Charted Top 15 US (original single)</div>
-      <div class="credit"><strong>Documentary Producer</strong> — Sundance-recognized filmmaker</div>
-      <div class="credit"><strong>Tom's Town Distilling Co.</strong> — Radio ad jingle &amp; brand audio</div>
-      <div class="credit"><strong>Art Direction</strong> — Photoshoots, music videos, brand identity</div>
-    </div>
-  </section>
-
-  <!-- ── SKILLS + EDUCATION ─────────────────────────────── -->
-  <div class="two-col">
-
-    <section class="section">
-      <div class="label">Skills &amp; Tools</div>
-      <div class="skills-list">
-        Adobe Photoshop &amp; Premiere<br>
-        Logic Pro &amp; Sound Design<br>
-        Google Workspace<br>
-        Web Development (HTML / CSS)<br>
-        Brand Identity &amp; Art Direction<br>
-        Client Presentation<br>
-        Contractor &amp; Vendor Management
+      <div class="block">
+        <div class="label">Capabilities</div>
+        <div class="caps">
+          Brand &amp; art direction<br>
+          Copywriting<br>
+          Project &amp; vendor management<br>
+          Client relations<br>
+          Adobe Photoshop &amp; Premiere<br>
+          Logic Pro &amp; sound design<br>
+          Web (HTML / CSS)<br>
+          Google Workspace
+        </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="label">Education</div>
-      <div class="edu-school">University of Northern Colorado</div>
-      <div class="edu-detail">
-        Business Administration<br>
-        Monfort College of Business<br>
-        Greeley, CO
+      <div class="block">
+        <div class="label">Education</div>
+        <div class="edu-name">University of Northern Colorado</div>
+        <div class="edu-meta">Business Administration<br>Monfort College of Business</div>
       </div>
-    </section>
+
+    </aside>
 
   </div>
 
