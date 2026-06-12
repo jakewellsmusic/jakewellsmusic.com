@@ -263,6 +263,10 @@
       .page { box-shadow: none; padding: 40px 48px; }
     }
 
+    /* Keep blocks from splitting across page breaks */
+    .section, .job, .venture, .credit-item { break-inside: avoid; page-break-inside: avoid; }
+    .section-title { break-after: avoid; page-break-after: avoid; }
+
     @media (max-width: 600px) {
       .page { padding: 32px 24px; }
       .credits-grid { grid-template-columns: 1fr; }
